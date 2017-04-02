@@ -18,8 +18,8 @@ echo "##########################################################################
 
 # Update the repositories
 sudo add-apt-repository ppa:ondrej/php5-5.6
-sudo apt-get install python-software-properties
-sudo apt-get install software-properties-common
+sudo apt-get -y install python-software-properties
+sudo apt-get -y install software-properties-common
 sudo apt-get -y update
 
 # Apache, Php, MySQL and required packages installation
@@ -56,7 +56,7 @@ sudo sed -i -e"s/^bind-address\s*=\s*127.0.0.1/explicit_defaults_for_timestamp =
 
 # Install phpmyadmin
 #echo -e "\n Installing phpMyAdmin"
-#sudo apt-get install phpmyadmin -y
+#sudo apt-get -y install phpmyadmin
 
 #Restart all the installed services to verify that everything is installed properly
 
