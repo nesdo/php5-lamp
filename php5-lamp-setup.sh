@@ -53,6 +53,7 @@ sudo apt-get -y install mysql-server-5.6
 
 # mysql config on Ubuntu 14.04
 sudo sed -i -e"s/^bind-address\s*=\s*127.0.0.1/explicit_defaults_for_timestamp = true\n#bind-address = 0.0.0.0/" /etc/mysql/my.cnf
+mysql -uroot -p'mypassword' -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'mypassword' WITH GRANT OPTION; FLUSH PRIVILEGES;"
 
 # Install phpmyadmin
 #echo -e "\n Installing phpMyAdmin"
