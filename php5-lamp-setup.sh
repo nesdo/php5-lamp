@@ -33,6 +33,7 @@ sudo apt-get -y install apache2 libcurl3 php5 php5-mhash php5-mcrypt php5-curl p
 
 sudo a2enmod rewrite
 sudo php5enmod mcrypt
+sudo a2enmod ssl
 
 # Set apache permission
 sudo gpasswd -a "$USER" www-data
