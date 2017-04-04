@@ -17,23 +17,30 @@ echo "Please be Patient: Installation will start now.......and it will take some
 echo "###################################################################################"
 
 # Update the repositories
-sudo add-apt-repository ppa:ondrej/php5-5.6
+#sudo add-apt-repository ppa:ondrej/php5-5.6
 sudo apt-get -y install python-software-properties
 sudo apt-get -y install software-properties-common
+sudo add-apt-repository ppa:ondrej/php
 sudo apt-get -y update
+sudo apt-get -y upgrade
 
 # Apache, Php, MySQL and required packages installation
 
 # Basic Requirements
 sudo apt-get -y install pwgen python-setuptools curl git nano sudo unzip openssh-server openssl
-
+sudo curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+sudo curl -sSL https://raw.github.com/colinmollenhour/modman/master/modman > /usr/local/bin/modman
+sudo chmod +x /usr/local/bin/modman
 
 # Magento Requirements
-sudo apt-get -y install apache2 libcurl3 php5 php5-mhash php5-mcrypt php5-curl php5-cli php5-mysql php5-gd php5-imagick php5-intl php5-xsl mysql-client-5.6 mysql-client-core-5.6
+sudo apt-get -y install apache2 libcurl3 php5.6 php5.6-common php5.6-mcrypt php5.6-curl php5.6-cli php5.6-mysql php5.6-gd php5-imagick php5.6-intl php5.6-xsl mysql-client-5.6 mysql-client-core-5.6 php5.6-dom php5.6-soap php5.6-mbstring
+
 
 sudo a2enmod rewrite
-sudo php5enmod mcrypt
 sudo a2enmod ssl
+sudo php5enmod mcrypt
+sudo php5enmod php5
+
 
 # Set apache permission
 sudo gpasswd -a "$USER" www-data
@@ -42,7 +49,7 @@ sudo sed -i -e"s/user\s*=\s*www-data/user = $USER www-data/" /etc/php5/fpm/pool.
 sudo sed -i -e"s/listen.owner\s*=\s*www-data/listen.owner = $USER www-data/" /etc/php5/fpm/pool.d/www.conf
 
 # Install Mod-FastCGI and PHP5-FPM on Ubuntu 14.04
-sudo apt-get -y install apache2-mpm-worker libapache2-mod-fastcgi php5-fpm
+sudo apt-get -y install apache2-mpm-worker libapache2-mod-fastcgi php5.6-fpm
 sudo a2enmod actions alias fastcgi
 
 
