@@ -45,8 +45,8 @@ sudo php5enmod php5
 # Set apache permission
 sudo gpasswd -a "$USER" www-data
 
-sudo sed -i -e"s/user\s*=\s*www-data/user = $USER /" /etc/php5/fpm/pool.d/www.conf
-sudo sed -i -e"s/listen.owner\s*=\s*www-data/listen.owner = $USER /" /etc/php5/fpm/pool.d/www.conf
+sudo sed -i -e"s/user\s*=\s*www-data/user = $USER /" /etc/php/5.6/fpm/pool.d/www.conf
+sudo sed -i -e"s/listen.owner\s*=\s*www-data/listen.owner = $USER /" /etc/php/5.6/fpm/pool.d/www.conf
 
 # Install Mod-FastCGI and PHP5-FPM on Ubuntu 14.04
 sudo apt-get -y install apache2-mpm-worker libapache2-mod-fastcgi php5.6-fpm
