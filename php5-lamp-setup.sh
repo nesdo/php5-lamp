@@ -45,8 +45,8 @@ sudo php5enmod php5
 # Set apache permission
 sudo gpasswd -a "$USER" www-data
 
-sudo sed -i -e"s/user\s*=\s*www-data/user = $USER www-data/" /etc/php5/fpm/pool.d/www.conf
-sudo sed -i -e"s/listen.owner\s*=\s*www-data/listen.owner = $USER www-data/" /etc/php5/fpm/pool.d/www.conf
+sudo sed -i -e"s/user\s*=\s*www-data/user = $USER /" /etc/php5/fpm/pool.d/www.conf
+sudo sed -i -e"s/listen.owner\s*=\s*www-data/listen.owner = $USER /" /etc/php5/fpm/pool.d/www.conf
 
 # Install Mod-FastCGI and PHP5-FPM on Ubuntu 14.04
 sudo apt-get -y install apache2-mpm-worker libapache2-mod-fastcgi php5.6-fpm
@@ -59,7 +59,7 @@ sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password passwor
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password mypassword'
 sudo apt-get -y install mysql-server-5.6
 
-# mysql config on Ubuntu 14.04
+# mysql config on Ubuntu 14.04 to be remote server
 sudo sed -i -e"s/^bind-address\s*=\s*127.0.0.1/explicit_defaults_for_timestamp = true\n#bind-address = 0.0.0.0/" /etc/mysql/my.cnf
 mysql -uroot -p'mypassword' -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'mypassword' WITH GRANT OPTION; FLUSH PRIVILEGES;"
 
