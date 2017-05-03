@@ -38,6 +38,7 @@ sudo apt-get -y install apache2 libcurl3 php5.6 php5.6-common php5.6-mcrypt php5
 
 sudo a2enmod rewrite
 sudo a2enmod ssl
+sudo a2enmod headers
 sudo php5enmod mcrypt
 sudo php5enmod php5
 
@@ -66,6 +67,10 @@ mysql -uroot -p'mypassword' -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTI
 # Install phpmyadmin
 #echo -e "\n Installing phpMyAdmin"
 #sudo apt-get -y install phpmyadmin
+
+# Install vietcli
+sudo wget -O /usr/local/sbin/vietcli -q --no-check-certificate https://raw.githubusercontent.com/vietcli/Create-Apache2-Virtualhost/master/vietcli.sh
+sudo chmod +x /usr/local/sbin/vietcli
 
 #Restart all the installed services to verify that everything is installed properly
 
